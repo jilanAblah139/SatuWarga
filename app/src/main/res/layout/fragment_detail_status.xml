@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Pengajuan Validasi atau TTD RT" />
+        android:text="Pengajuan Validasi atau TTD RT" />
 
     <ImageView
         android:id="@+id/iv_logo_selesai"
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_logo_selesai"
-        tools:text="Selesai" />
+        android:text="Selesai" />
 
     <TextView
         android:id="@+id/tvJudulLaporan"

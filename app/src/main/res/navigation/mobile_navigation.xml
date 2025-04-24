@@ -31,6 +31,9 @@
         <action
             android:id="@+id/action_listPelayananFragment_to_BantuanDaruratFragment"
             app:destination="@id/navigation_bantuan_darurat" />
+        <action
+            android:id="@+id/action_statusPelayananFragment_toDetailStatusFragment"
+            app:destination="@id/navigation_detail_status" />"
     </fragment>
 
     <fragment
@@ -84,6 +87,12 @@
         android:name="com.md.satuwargaapp.ui.pelayanan.LaporFotoFragment"
         android:label="Lapor Foto"
         tools:layout="@layout/fragment_lapor_foto"/>
+
+    <fragment
+        android:id="@+id/navigation_detail_status"
+        android:name="com.md.satuwargaapp.ui.pelayanan.DetailStatusFragment"
+        android:label="Detail Status"
+        tools:layout="@layout/fragment_detail_status"/>
 
     <fragment
         android:id="@+id/navigation_list_pelayanan"
