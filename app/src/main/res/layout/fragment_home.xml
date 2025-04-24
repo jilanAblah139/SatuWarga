@@ -1,22 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    android:background="#FDFDFD">
 
-    <TextView
-        android:id="@+id/text_home"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header Profile -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:background="@drawable/bg_card_header">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/profile"
+                android:scaleType="centerCrop"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_circle" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rahman Widijanto"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cendana Residence No. 45 Blok D RT 01"
+                    android:textSize="12sp"
+                    android:textColor="#666" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_bell" />
+        </LinearLayout>
+
+        <!-- Search Bar -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Mau cari apa..."
+            android:drawableStart="@drawable/ic_search"
+            android:padding="12dp"
+            android:background="@drawable/bg_edittext"
+            android:layout_marginTop="12dp" />
+
+        <!-- Menu Grid -->
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="4"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_saran" />
+                <TextView android:text="Saran"
+                    android:textSize="12sp"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <!-- Tambahkan menu lainnya seperti Lapor Masalah, Buat Surat, dll. -->
+
+        </GridLayout>
+
+        <!-- Notifikasi Warga -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="\u2022 Bu Ningsih (Lansia) sudah tidak aktif lebih dari 1 x 24 jam. Apakah anda mengetahui keadaannya?"
+            android:textColor="#D9534F"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_warning"
+            android:padding="12dp"
+            android:textSize="12sp" />
+
+        <!-- Pengumuman -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pengumuman"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bapak ibu, mohon maaf tukang sampahnya hari ini tidak bisa mengangkut..."
+            android:textSize="14sp"
+            android:padding="12dp"
+            android:background="@drawable/bg_card"
+            android:layout_marginTop="8dp" />
+
+        <!-- Agenda Terdekat -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agenda Terdekat"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kerja Bakti Bersihkan Gorong-gorong\n15 Okt - 7:30 - 9:30 WIB"
+            android:textSize="14sp"
+            android:padding="12dp"
+            android:background="@drawable/bg_card"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+</ScrollView>

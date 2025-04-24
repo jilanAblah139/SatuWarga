@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutSaran"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F5"
+    android:padding="16dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingBottom="12dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Kembali" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Saran dan Kritik"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingStart="8dp" />
+
+        <Button
+            android:id="@+id/btnKirim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kirim"
+            android:backgroundTint="#4C7DFE"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <!-- Text Area -->
+    <EditText
+        android:id="@+id/etSaran"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:gravity="top|start"
+        android:hint="Tulis saran dan kritik untuk kepengurusan RT tahun ini..."
+        android:padding="16dp"
+        android:inputType="textMultiLine"
+        android:minLines="10" />
+
+    <!-- Bottom bar icon -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="12dp"
+        android:background="@android:color/white">
+
+        <ImageButton
+            android:id="@+id/btnFoto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_camera"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Kamera" />
+
+        <ImageButton
+            android:id="@+id/btnLampiran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_attachment"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Lampiran" />
+
+        <ImageButton
+            android:id="@+id/btnLokasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_location"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Lokasi" />
+    </LinearLayout>
+</LinearLayout>
