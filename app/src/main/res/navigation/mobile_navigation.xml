@@ -15,7 +15,23 @@
         android:id="@+id/navigation_pelayanan"
         android:name="com.md.satuwargaapp.ui.pelayanan.PelayananFragment"
         android:label="@string/title_pelayanan"
-        tools:layout="@layout/fragment_pelayanan" />
+        tools:layout="@layout/fragment_pelayanan">
+        <action
+            android:id="@+id/action_listPelayananFragment_to_PelaporanMasalahFragment"
+            app:destination="@id/navigation_pelaporan_masalah" />
+        <action
+            android:id="@+id/action_listPelayananFragment_to_PengajuanValidasiFragment"
+            app:destination="@id/navigation_pengajuan_validasi" />
+        <action
+            android:id="@+id/action_listPelayananFragment_to_PengajuanSuratFragment"
+            app:destination="@id/navigation_pengajuan_surat" />
+        <action
+            android:id="@+id/action_listPelayananFragment_to_PengajuanIzinFragment"
+            app:destination="@id/navigation_pengajuan_izin" />
+        <action
+            android:id="@+id/action_listPelayananFragment_to_BantuanDaruratFragment"
+            app:destination="@id/navigation_bantuan_darurat" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_keuangan"
@@ -28,5 +44,52 @@
         android:name="com.md.satuwargaapp.ui.papanpengumuman.PapanPengumumanFragment"
         android:label="@string/title_papan_pengumuman"
         tools:layout="@layout/fragment_papan_pengumuman" />
+
+    <fragment
+        android:id="@+id/navigation_pelaporan_masalah"
+        android:name="com.md.satuwargaapp.ui.pelayanan.PelaporanMasalahFragment"
+        android:label="Pelaporan Masalah"
+        tools:layout="@layout/fragment_pelaporan_masalah">
+        <action
+            android:id="@+id/action_PelaporanMasalahFragment_to_laporFotoFragment"
+            app:destination="@id/navigation_lapor_foto" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_pengajuan_validasi"
+        android:name="com.md.satuwargaapp.ui.pelayanan.PengajuanValidasiFragment"
+        android:label="Pengajuan Validasi"
+        tools:layout="@layout/fragment_pengajuan_validasi"/>
+
+    <fragment
+        android:id="@+id/navigation_pengajuan_surat"
+        android:name="com.md.satuwargaapp.ui.pelayanan.PengajuanSuratFragment"
+        android:label="Pengajuan Surat"
+        tools:layout="@layout/fragment_pengajuan_surat"/>
+
+    <fragment
+        android:id="@+id/navigation_pengajuan_izin"
+        android:name="com.md.satuwargaapp.ui.pelayanan.PengajuanIzinFragment"
+        android:label="Pengajuan Izin"
+        tools:layout="@layout/fragment_pengajuan_izin"/>
+
+    <fragment
+        android:id="@+id/navigation_bantuan_darurat"
+        android:name="com.md.satuwargaapp.ui.pelayanan.BantuanDaruratFragment"
+        android:label="Bantuan Darurat"
+        tools:layout="@layout/fragment_bantuan_darurat"/>
+
+    <fragment
+        android:id="@+id/navigation_lapor_foto"
+        android:name="com.md.satuwargaapp.ui.pelayanan.LaporFotoFragment"
+        android:label="Lapor Foto"
+        tools:layout="@layout/fragment_lapor_foto"/>
+
+    <fragment
+        android:id="@+id/navigation_list_pelayanan"
+        android:name="com.md.satuwargaapp.ui.pelayanan.ListPelayananFragment"
+        android:label="Layanan"
+        tools:layout="@layout/fragment_list_pelayanan">
+    </fragment>
 
 </navigation>
