@@ -6,6 +6,9 @@
     <string name="title_papan_pengumuman">Pengumuman</string>
     <string name="title_keuangan">Keuangan</string>
     <string name="title_pelayanan">Pelayanan</string>
+    <string name="tab_text_1">Laporan Keuangan</string>
+    <string name="tab_text_2">Iuran Kas</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="string_isi_pengumuman">Bapak, ibu, mohon maaf tukang sampahnya hari ini tidak bisa mengangkut, ban nya bocor, besok Insya Allah baru bisa diangkut, terima kasih</string>
 
     <string-array name="data_nama">
