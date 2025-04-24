@@ -15,4 +15,11 @@
     <string name="pengajuan_surat">Pengajuan Surat</string>
     <string name="pengajuan_validasi">Pengajuan Validasi</string>
     <string name="pengajuan_bantuan_darurat">Pengajuan Bantuan Darurat</string>
+    <string name="lokasi_foto">Lokasi Foto</string>
+    <string name="def_lokasi">Cendana Residence RT 01 RW 06 No. 34 Kelurahan Depok, Kecamatan Pancoran Mas, Depok, Jawa Barat, 16411</string>
+    <string name="judul_laporan">Judul Laporan</string>
+    <string name="detail_laporan">Detail Laporan</string>
+    <string name="checkbox_foto">Saya bertanggungjawab atas keaslian laporan ini dan menyatakan bahwa kejadian yang dilaporkan benar-benar terjadi.</string>
+    <string name="kirim_laporan">Kirim Laporan</string>
+    <string name="def_ubahktp">Validasi Surat Keterangan Ubah KTP</string>
 </resources>
