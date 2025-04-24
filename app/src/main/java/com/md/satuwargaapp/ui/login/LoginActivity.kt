@@ -1,21 +1,29 @@
-package com.md.satuwargaapp.ui.login
+package com.example.wargaapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.md.satuwargaapp.R
+import com.md.satuwargaapp.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityLoginBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_login)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.btnLogin.setOnClickListener {
+            val phone = binding.etPhone.text.toString()
+            val password = binding.etPassword.text.toString()
+            val token = binding.etToken.text.toString()
+
+            if (phone.isEmpty() || password.isEmpty() || token.isEmpty()) {
+                Toast.makeText(this, "Semua field harus diisi", Toast.LENGTH_SHORT).show()
+            } else {
+                // TODO: Proses login di sini
+                Toast.makeText(this, "Login berhasil (dummy)", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
