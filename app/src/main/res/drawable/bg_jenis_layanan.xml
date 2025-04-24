@@ -1,0 +1,6 @@
+<!-- res/drawable/bg_jenis_layanan.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#E0E0E0" />
+    <corners android:radius="10dp" />
+</shape>

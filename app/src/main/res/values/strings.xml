@@ -6,6 +6,21 @@
     <string name="title_papan_pengumuman">Pengumuman</string>
     <string name="title_keuangan">Keuangan</string>
     <string name="title_pelayanan">Pelayanan</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="pelaporan_masalah">Pelaporan Masalah</string>
+    <string name="desc_pelaporan_masalah">Fitur ini memungkinkan warga untuk melaporkan masalah lingkungan seperti kebersihan, infrastruktur rusak, atau gangguan keamanan. Laporan akan diproses dan diteruskan ke pengurus RT/RW untuk ditindaklanjuti dalam waktu yang ditentukan. Transparansi dalam penanganan masalah akan dipantau secara berkala.</string>
+    <string name="syarat_ketentuan"><![CDATA[Syarat & Ketentuan]]></string>
+    <string name="pengajuan_izin">Pengajuan Izin</string>
+    <string name="pengajuan_surat">Pengajuan Surat</string>
+    <string name="pengajuan_validasi">Pengajuan Validasi</string>
+    <string name="pengajuan_bantuan_darurat">Pengajuan Bantuan Darurat</string>
+    <string name="lokasi_foto">Lokasi Foto</string>
+    <string name="def_lokasi">Cendana Residence RT 01 RW 06 No. 34 Kelurahan Depok, Kecamatan Pancoran Mas, Depok, Jawa Barat, 16411</string>
+    <string name="judul_laporan">Judul Laporan</string>
+    <string name="detail_laporan">Detail Laporan</string>
+    <string name="checkbox_foto">Saya bertanggungjawab atas keaslian laporan ini dan menyatakan bahwa kejadian yang dilaporkan benar-benar terjadi.</string>
+    <string name="kirim_laporan">Kirim Laporan</string>
+    <string name="def_ubahktp">Validasi Surat Keterangan Ubah KTP</string>
     <string name="tab_text_1">Laporan Keuangan</string>
     <string name="tab_text_2">Iuran Kas</string>
     <!-- TODO: Remove or change this placeholder text -->

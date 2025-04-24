@@ -28,6 +28,9 @@ android {
             )
         }
     }
+    buildFeatures{
+        viewBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -58,8 +61,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     //glide
-    implementation("com.github.bumptech.glide:glide:4.11.0")
-    implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation(libs.glide)
 
     implementation(libs.androidx.viewpager2)
 }
