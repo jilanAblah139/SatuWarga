@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.md.satuwargaapp.R
@@ -41,6 +42,17 @@ class PapanPengumumanFragment : Fragment() {
         binding.rvPengumuman.setHasFixedSize(true)
         list.addAll(getListPengumuman())
         showRecyclerList()
+
+        binding.floatingActionButton.setOnClickListener {
+            val dialog = DialogPengumumanFragment()
+            dialog.listener = object : DialogPengumumanFragment.DialogPengumumanListener {
+                override fun onLanjutTambahPostingan() {
+                    findNavController().navigate(R.id.action_navigation_papan_pengumuman_to_tambahPostinganFragment)
+                }
+            }
+            dialog.show(parentFragmentManager, "DialogPengumuman")
+        }
+
     }
 
     private fun getListPengumuman(): ArrayList<papanPengumuman> {
