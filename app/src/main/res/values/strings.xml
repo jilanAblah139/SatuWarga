@@ -6,6 +6,13 @@
     <string name="title_papan_pengumuman">Pengumuman</string>
     <string name="title_keuangan">Keuangan</string>
     <string name="title_pelayanan">Pelayanan</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="pelaporan_masalah">Pelaporan Masalah</string>
+    <string name="desc_pelaporan_masalah">Fitur ini memungkinkan warga untuk melaporkan masalah lingkungan seperti kebersihan, infrastruktur rusak, atau gangguan keamanan. Laporan akan diproses dan diteruskan ke pengurus RT/RW untuk ditindaklanjuti dalam waktu yang ditentukan. Transparansi dalam penanganan masalah akan dipantau secara berkala.</string>
+    <string name="syarat_ketentuan"><![CDATA[Syarat & Ketentuan]]></string>
+    <string name="pengajuan_izin">Pengajuan Izin</string>
+    <string name="pengajuan_surat">Pengajuan Surat</string>
+    <string name="pengajuan_validasi">Pengajuan Validasi</string>
+    <string name="pengajuan_bantuan_darurat">Pengajuan Bantuan Darurat</string>
 </resources>

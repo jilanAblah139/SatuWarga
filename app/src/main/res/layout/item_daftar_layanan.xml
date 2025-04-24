@@ -24,7 +24,7 @@
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
-            tools:src="@drawable/ic_pelaporan_masalah" />
+            tools:src="@drawable/ic_pengajuan_surat" />
 
         <TextView
             android:id="@+id/tv_nama_pel"
