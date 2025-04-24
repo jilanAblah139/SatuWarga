@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    tools:context=".ui.pelayanan.PengajuanSuratFragment">
+
+    <ImageView
+        android:id="@+id/iv_pengajuan_surat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_pengajuan_surat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvPengajuanSurat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/pengajuan_surat"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_pengajuan_surat" />
+
+    <TextView
+        android:id="@+id/tvDescPengajuanSurat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/desc_pelaporan_masalah"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPengajuanSurat" />
+
+    <TextView
+        android:id="@+id/tvSyaratKetentuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/syarat_ketentuan"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescPengajuanSurat" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ic_snk_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSyaratKetentuan"
+        app:srcCompat="@drawable/ic_house_24" />
+
+    <TextView
+        android:id="@+id/tv_desc_1"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Permasalahan yang dilaporkan merupakan permasalahan yang berada di lingkungan RT 01 RW 06 Cendana Residence, Depok"
+        app:layout_constraintBottom_toBottomOf="@+id/ic_snk_1"
+        app:layout_constraintStart_toEndOf="@+id/ic_snk_1"
+        app:layout_constraintTop_toTopOf="@+id/ic_snk_1" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ic_snk_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_desc_1"
+        app:srcCompat="@drawable/ic_person_24" />
+
+    <TextView
+        android:id="@+id/tv_desc_2"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Identitas pelapor akan dijaga kerahasiaannya. Namun, untuk tindak lanjut, pelapor mungkin dihubungi untuk klarifikasi lebih lanjut."
+        app:layout_constraintBottom_toBottomOf="@+id/ic_snk_2"
+        app:layout_constraintStart_toEndOf="@+id/ic_snk_2"
+        app:layout_constraintTop_toTopOf="@+id/ic_snk_2" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ic_snk_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ic_snk_2"
+        app:srcCompat="@drawable/ic_verified_24" />
+
+    <TextView
+        android:id="@+id/tv_desc_3"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Pelapor bertanggung jawab atas keakuratan informasi yang diberikan. Penyampaian laporan palsu dapat berakibat pada tindakan tegas."
+        app:layout_constraintBottom_toBottomOf="@+id/ic_snk_3"
+        app:layout_constraintStart_toEndOf="@+id/ic_snk_3"
+        app:layout_constraintTop_toTopOf="@+id/ic_snk_3" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ic_snk_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ic_snk_3"
+        app:srcCompat="@drawable/ic_time_24" />
+
+    <TextView
+        android:id="@+id/tv_desc_4"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Setiap laporan akan diproses dalam waktu 3 x 24 jam. Pelapor akan mendapatkan notifikasi tentang status laporan."
+        app:layout_constraintBottom_toBottomOf="@+id/ic_snk_4"
+        app:layout_constraintStart_toEndOf="@+id/ic_snk_4"
+        app:layout_constraintTop_toTopOf="@+id/ic_snk_4" />
+
+    <Button
+        android:id="@+id/btn_lapor_foto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Lapor dengan Photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_desc_4" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Lapor dengan Photo"
+        android:backgroundTint="?attr/colorOnPrimary"
+        android:textColor="?attr/colorPrimarySurface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_lapor_foto"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
