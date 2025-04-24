@@ -23,10 +23,35 @@
         android:label="@string/title_keuangan"
         tools:layout="@layout/fragment_keuangan" />
 
+
+    <fragment
+        android:id="@+id/dialog_pengumuman"
+        android:name="com.md.satuwargaapp.ui.papanpengumuman.DialogPengumumanFragment"
+        tools:layout="@layout/fragment_dialog_pengumuman"
+        android:label="Dialog Pengumuman">
+        <action
+            android:id="@+id/action_dialogPengumuman_to_tambahPostinganFragment"
+            app:destination="@id/tambahPostinganFragment" />
+    </fragment>
+
+
     <fragment
         android:id="@+id/navigation_papan_pengumuman"
         android:name="com.md.satuwargaapp.ui.papanpengumuman.PapanPengumumanFragment"
         android:label="@string/title_papan_pengumuman"
-        tools:layout="@layout/fragment_papan_pengumuman" />
+        tools:layout="@layout/fragment_papan_pengumuman">
+        <action
+            android:id="@+id/action_navigation_papan_pengumuman_to_tambahPostinganFragment"
+            app:destination="@id/tambahPostinganFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/tambahPostinganFragment"
+        android:name="com.md.satuwargaapp.ui.papanpengumuman.TambahPostinganFragment"
+        android:label="Tambah Postingan">
+        <action
+            android:id="@+id/action_tambahPostinganFragment_to_pengumumanFragment"
+            app:destination="@id/navigation_papan_pengumuman" />
+    </fragment>
 
 </navigation>

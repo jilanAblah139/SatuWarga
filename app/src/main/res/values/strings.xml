@@ -6,4 +6,89 @@
     <string name="title_papan_pengumuman">Pengumuman</string>
     <string name="title_keuangan">Keuangan</string>
     <string name="title_pelayanan">Pelayanan</string>
+    <string name="tab_text_1">Laporan Keuangan</string>
+    <string name="tab_text_2">Iuran Kas</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="string_isi_pengumuman">Bapak, ibu, mohon maaf tukang sampahnya hari ini tidak bisa mengangkut, ban nya bocor, besok Insya Allah baru bisa diangkut, terima kasih</string>
+
+    <string-array name="data_nama">
+        <item>Pak RT</item>
+        <item>Bu RW</item>
+        <item>Pak Andi</item>
+        <item>Ibu Sinta</item>
+        <item>Pak Budi</item>
+        <item>Ibu Yani</item>
+        <item>Pak Didi</item>
+        <item>Bu Lilis</item>
+    </string-array>
+
+    <string-array name="data_jabatan">
+        <item>Ketua RT</item>
+        <item>Ketua RW</item>
+        <item>Wakil RT</item>
+        <item>Bendahara</item>
+        <item>Sekretaris</item>
+        <item>Kader Posyandu</item>
+        <item>Warga</item>
+        <item>Warga</item>
+    </string-array>
+
+    <string-array name="data_isi">
+        <item>Rapat RT akan dilaksanakan pada hari Minggu pukul 10 pagi.</item>
+        <item>Mohon warga menjaga kebersihan lingkungan.</item>
+        <item>Gotong royong akan dimulai pukul 7 pagi.</item>
+        <item>Terima kasih atas partisipasi warga dalam kegiatan donor darah.</item>
+        <item>Pengajian rutin akan diadakan di rumah Pak Didi.</item>
+        <item>Posyandu balita akan dilaksanakan besok pagi.</item>
+        <item>Jangan lupa iuran kebersihan bulan ini.</item>
+        <item>Senam pagi bersama akan dilaksanakan di lapangan.</item>
+    </string-array>
+
+    <string-array name="data_tanggal">
+        <item>2025-04-20</item>
+        <item>2025-04-18</item>
+        <item>2025-04-19</item>
+        <item>2025-04-17</item>
+        <item>2025-04-21</item>
+        <item>2025-04-22</item>
+        <item>2025-04-23</item>
+        <item>2025-04-24</item>
+    </string-array>
+
+    <string-array name="data_likes">
+        <item>15</item>
+        <item>22</item>
+        <item>12</item>
+        <item>18</item>
+        <item>10</item>
+        <item>25</item>
+        <item>8</item>
+        <item>30</item>
+    </string-array>
+
+    <string-array name="data_comment">
+        <item>3</item>
+        <item>5</item>
+        <item>2</item>
+        <item>4</item>
+        <item>1</item>
+        <item>6</item>
+        <item>2</item>
+        <item>10</item>
+    </string-array>
+
+    <array name="data_photo">
+        <item>@drawable/dummyprofile</item>
+        <item>@drawable/dummyprofile</item>
+        <item>@drawable/dummyprofile</item>
+        <item>@drawable/dummyprofile</item>
+        <item>@drawable/dummyprofile</item>
+        <item>@drawable/dummyprofile</item>
+        <item>@drawable/dummyprofile</item>
+        <item>@drawable/dummyprofile</item>
+    </array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>
