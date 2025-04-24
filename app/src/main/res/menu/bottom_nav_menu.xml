@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/title_home" />
+    <item
+        android:id="@+id/navigation_papan_pengumuman"
+        android:icon="@drawable/ic_pengumuman"
+        android:title="@string/title_papan_pengumuman" />
+    <item
+        android:id="@+id/navigation_pelayanan"
+        android:icon="@drawable/ic_pelayanan"
+        android:title="@string/title_pelayanan" />
+    <item
+        android:id="@+id/navigation_keuangan"
+        android:icon="@drawable/ic_keuangan"
+        android:title="@string/title_keuangan" />
+
+
+
+</menu>

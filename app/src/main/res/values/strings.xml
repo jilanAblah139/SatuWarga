@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">SatuWargaApp</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_papan_pengumuman">Pengumuman</string>
+    <string name="title_keuangan">Keuangan</string>
+    <string name="title_pelayanan">Pelayanan</string>
+</resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.md.satuwargaapp.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_pelayanan"
+        android:name="com.md.satuwargaapp.ui.pelayanan.PelayananFragment"
+        android:label="@string/title_pelayanan"
+        tools:layout="@layout/fragment_pelayanan" />
+
+    <fragment
+        android:id="@+id/navigation_keuangan"
+        android:name="com.md.satuwargaapp.ui.keuangan.KeuanganFragment"
+        android:label="@string/title_keuangan"
+        tools:layout="@layout/fragment_keuangan" />
+
+    <fragment
+        android:id="@+id/navigation_papan_pengumuman"
+        android:name="com.md.satuwargaapp.ui.papanpengumuman.PapanPengumumanFragment"
+        android:label="@string/title_papan_pengumuman"
+        tools:layout="@layout/fragment_papan_pengumuman" />
+
+</navigation>
