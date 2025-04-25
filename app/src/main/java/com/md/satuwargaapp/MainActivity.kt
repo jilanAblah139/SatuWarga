@@ -1,7 +1,9 @@
+package com.md.satuwargaapp
+
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.md.satuwargaapp.R
 import com.md.satuwargaapp.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
@@ -14,15 +16,13 @@ class MainActivity : AppCompatActivity() {
 
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.nav_home -> openFragment(HomeFragment())
-                R.id.nav_pengumuman -> openFragment(PengumumanFragment())
-                R.id.nav_pelayanan -> openFragment(PelayananFragment())
-                R.id.nav_keuangan -> openFragment(KeuanganFragment())
+                R.id.navigation_home -> openFragment(HomeFragment())
+                // Tambahkan item lainnya jika perlu
             }
             true
         }
 
-        // Default Fragment
+        // Load fragment pertama saat pertama kali
         openFragment(HomeFragment())
     }
 

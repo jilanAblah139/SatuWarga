@@ -17,16 +17,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:padding="12dp"
-            android:background="@drawable/bg_card_header">
+            android:padding="12dp">
 
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/profile"
+                android:src="@drawable/ic_avatar"
                 android:scaleType="centerCrop"
-                android:layout_marginEnd="12dp"
-                android:background="@drawable/bg_circle" />
+                android:layout_marginEnd="12dp" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -99,7 +97,6 @@
             android:text="\u2022 Bu Ningsih (Lansia) sudah tidak aktif lebih dari 1 x 24 jam. Apakah anda mengetahui keadaannya?"
             android:textColor="#D9534F"
             android:layout_marginTop="16dp"
-            android:background="@drawable/bg_warning"
             android:padding="12dp"
             android:textSize="12sp" />
 
@@ -118,7 +115,6 @@
             android:text="Bapak ibu, mohon maaf tukang sampahnya hari ini tidak bisa mengangkut..."
             android:textSize="14sp"
             android:padding="12dp"
-            android:background="@drawable/bg_card"
             android:layout_marginTop="8dp" />
 
         <!-- Agenda Terdekat -->
@@ -136,7 +132,6 @@
             android:text="Kerja Bakti Bersihkan Gorong-gorong\n15 Okt - 7:30 - 9:30 WIB"
             android:textSize="14sp"
             android:padding="12dp"
-            android:background="@drawable/bg_card"
             android:layout_marginTop="8dp" />
 
     </LinearLayout>
