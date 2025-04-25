@@ -1,34 +1,37 @@
 package com.md.satuwargaapp
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.md.satuwargaapp.ui.home.HomeFragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.md.satuwargaapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        bottomNav.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.navigation_home -> openFragment(HomeFragment())
-                // Tambahkan item lainnya jika perlu
-            }
-            true
-        }
+        val navView: BottomNavigationView = binding.navView
 
-        // Load fragment pertama saat pertama kali
-        openFragment(HomeFragment())
-    }
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        // Passing each menu ID as a set of Ids because each
+        // menu should be considered as top level destinations.
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.navigation_home, R.id.navigation_papan_pengumuman, R.id.navigation_pelayanan
+            )
+        )
 
-    private fun openFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.nav_host_fragment, fragment)
-            .commit()
+
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        navView.setupWithNavController(navController)
     }
 }
