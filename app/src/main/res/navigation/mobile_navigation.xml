@@ -33,7 +33,7 @@
             app:destination="@id/navigation_bantuan_darurat" />
         <action
             android:id="@+id/action_statusPelayananFragment_toDetailStatusFragment"
-            app:destination="@id/navigation_detail_status" />"
+            app:destination="@id/navigation_detail_status" />
     </fragment>
 
     <fragment

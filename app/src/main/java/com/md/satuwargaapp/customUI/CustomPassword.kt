@@ -28,7 +28,7 @@ class CustomPassword @JvmOverloads constructor(
 
                 } else {
                     val textInputLayout = parent.parent as? TextInputLayout
-                    (parent.parent as? com.google.android.material.textfield.TextInputLayout)?.error = null
+                    (parent.parent as? TextInputLayout)?.error = null
                     textInputLayout?.isEndIconVisible = true
                 }
             }

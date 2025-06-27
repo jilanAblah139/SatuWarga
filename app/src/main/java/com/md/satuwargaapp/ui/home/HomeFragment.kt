@@ -6,17 +6,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.md.satuwargaapp.R
 import com.md.satuwargaapp.databinding.FragmentHomeBinding
 import com.md.satuwargaapp.ui.papanpengumuman.ListPengumumanAdapter
-import com.md.satuwargaapp.ui.papanpengumuman.papanPengumuman
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    // 1. Inisialisasi ViewModel untuk HomeFragment
+    private val viewModel: HomeViewModel by viewModels()
     private lateinit var pengumumanAdapter: ListPengumumanAdapter
 
     override fun onCreateView(
@@ -30,42 +34,65 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupPengumuman()
+        setupRecyclerView()
         setupListeners()
+        setupObservers()
+
+        // 2. Minta ViewModel untuk mengambil data saat fragment dibuat
+        viewModel.loadHomeData()
     }
 
-    private fun setupListeners() {
-        binding.btnLihatSemuaPengumuman.setOnClickListener {
-            Toast.makeText(requireContext(), "Lihat semua pengumuman", Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun setupPengumuman() {
-        val dummyList = arrayListOf(
-            papanPengumuman(
-                id = 1,
-                namaUser = "Dadang Sutmajaya",
-                isiPengumuman = "Bapak, ibu, mohon maaf tukang sampah hari ini tidak bisa mengangkut, ban nya bocor.",
-                photo = R.drawable.dummyprofile,
-                jabatan = "Ketua RT"
-            ),
-            papanPengumuman(
-                id = 2,
-                namaUser = "Siti Rohmah",
-                isiPengumuman = "Besok akan ada kerja bakti jam 7:30 WIB, harap partisipasinya.",
-                photo = R.drawable.dummyprofile,
-                jabatan = "Sekretaris RW"
-            )
+    private fun setupRecyclerView() {
+        // 3. Inisialisasi adapter dengan aksi klik yang sesuai
+        pengumumanAdapter = ListPengumumanAdapter(
+            onEditClick = { announcement ->
+                // Aksi untuk edit bisa ditambahkan nanti
+                Toast.makeText(context, "Edit: ${announcement.title}", Toast.LENGTH_SHORT).show()
+            },
+            onDeleteClick = { announcement ->
+                // Aksi untuk delete bisa ditambahkan nanti
+                Toast.makeText(context, "Hapus: ${announcement.title}", Toast.LENGTH_SHORT).show()
+            }
         )
-
-        pengumumanAdapter = ListPengumumanAdapter(dummyList) { selectedItem ->
-            Toast.makeText(requireContext(), "Klik edit: ${selectedItem.namaUser}", Toast.LENGTH_SHORT).show()
-            // Tambahkan navigasi ke form edit jika ada
-        }
 
         binding.recyclerPengumuman.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = pengumumanAdapter
+        }
+    }
+
+    private fun setupListeners() {
+        binding.btnLihatSemuaPengumuman.setOnClickListener {
+            findNavController().navigate(R.id.navigation_papan_pengumuman)
+        }
+    }
+
+    private fun setupObservers() {
+        // Observer untuk data profil pengguna
+        viewModel.userProfile.observe(viewLifecycleOwner) { user ->
+            // Update UI dengan data pengguna
+            binding.tvNama.text = user.nama
+            binding.tvAlamat.text = user.alamat
+
+            // Catatan: Model 'User' kita belum punya URL foto profil.
+            // Jadi untuk sementara kita pakai placeholder dari drawable.
+            Glide.with(this)
+                .load(R.drawable.dummyprofile)
+                .circleCrop()
+                .into(binding.imgProfile)
+        }
+
+        viewModel.latestAnnouncements.observe(viewLifecycleOwner) { announcementList ->
+            // Update data di adapter menggunakan submitList
+            pengumumanAdapter.submitList(announcementList)
+        }
+
+        // Observer untuk pesan error
+        viewModel.errorMessage.observe(viewLifecycleOwner) { message ->
+            message?.let {
+                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+                viewModel.onErrorMessageShown()
+            }
         }
     }
 
