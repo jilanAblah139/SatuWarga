@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "286301546727",
+    "firebase_url": "https://satuwarga-7db2c-default-rtdb.firebaseio.com",
+    "project_id": "satuwarga-7db2c",
+    "storage_bucket": "satuwarga-7db2c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286301546727:android:43622af83098f139709a42",
+        "android_client_info": {
+          "package_name": "com.md.satuwargaapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDALq6I8JfU7llK8D4z4grIGIDSJ4DL0Ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
