@@ -4,61 +4,62 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.md.satuwargaapp.R
+import com.md.satuwargaapp.data.Announcement
 
-class ListPengumumanAdapter(private val listPengumuman: ArrayList<papanPengumuman>, private val onEditClick: (papanPengumuman)-> Unit) : RecyclerView.Adapter<ListPengumumanAdapter.ListViewHolder>() {
+class ListPengumumanAdapter(
+
+    private val onEditClick: (Announcement) -> Unit,
+    private val onDeleteClick: (Announcement) -> Unit
+) : ListAdapter<Announcement, ListPengumumanAdapter.ListViewHolder>(ANNOUNCEMENT_COMPARATOR) {
+
+    // 3. ViewHolder disesuaikan untuk menerima objek Announcement
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val namaUser = itemView.findViewById<TextView>(R.id.tv_item_name)
-        val isiPengumuman = itemView.findViewById<TextView>(R.id.tv_item_isiPengumuman)
-        val photo = itemView.findViewById<ImageView>(R.id.img_item_photo)
-        val jabatan = itemView.findViewById<TextView>(R.id.tv_item_jabatan)
-        val deleteButton = itemView.findViewById<Button>(R.id.deleteButton)
-        val editButton = itemView.findViewById<Button>(R.id.editButton)
+        private val namaUser: TextView = itemView.findViewById(R.id.tv_item_name)
+        private val isiPengumuman: TextView = itemView.findViewById(R.id.tv_item_isiPengumuman)
+        private val jabatan: TextView = itemView.findViewById(R.id.tv_item_jabatan)
+        private val deleteButton: Button = itemView.findViewById(R.id.deleteButton)
+        private val editButton: Button = itemView.findViewById(R.id.editButton)
 
+        fun bind(announcement: Announcement, onEditClick: (Announcement) -> Unit, onDeleteClick: (Announcement) -> Unit) {
+            // Binding data dari objek Announcement ke view
+            namaUser.text = announcement.user.nama
+            jabatan.text = announcement.user.role.replaceFirstChar { it.uppercase() } // Contoh format role
+            isiPengumuman.text = announcement.content
+
+            // Atur listener klik, memanggil lambda yang diberikan
+            editButton.setOnClickListener { onEditClick(announcement) }
+            deleteButton.setOnClickListener { onDeleteClick(announcement) }
+
+            // Anda juga bisa mengatur visibilitas tombol edit/delete berdasarkan peran pengguna di sini
+        }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): ListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_pengumuman, parent, false)
         return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-//        val (namaUser, isiPengumuman, photo, jabatan, deleteButton) = listPengumuman[position]
-//        Glide.with(holder.itemView.context)
-//            .load(photo)
-//            .into(holder.photo)
-//        holder.namaUser.text = namaUser
-//        holder.isiPengumuman.text = isiPengumuman
-//        holder.jabatan.text = jabatan
-//        holder.deleteButton.setOnClickListener {
-//            listPengumuman.removeAt(position)
-//            notifyItemRemoved(position)
-//        }
-        val item = listPengumuman[position]
-        Glide.with(holder.itemView.context)
-            .load(item.photo)
-            .into(holder.photo)
-        holder.namaUser.text = item.namaUser
-        holder.isiPengumuman.text = item.isiPengumuman
-        holder.jabatan.text = item.jabatan
-
-        holder.deleteButton.setOnClickListener {
-            listPengumuman.removeAt(position)
-            notifyItemRemoved(position)
-            notifyItemRangeChanged(position, listPengumuman.size)
-        }
-        holder.editButton.setOnClickListener {
-            onEditClick(item)
-        }
-
+        // 4. Gunakan getItem(position) untuk mendapatkan objek
+        val announcement = getItem(position)
+        holder.bind(announcement, onEditClick, onDeleteClick)
     }
 
-    override fun getItemCount(): Int = listPengumuman.size
+    // 5. Buat DiffUtil.ItemCallback untuk perbandingan list yang efisien
+    companion object {
+        private val ANNOUNCEMENT_COMPARATOR = object : DiffUtil.ItemCallback<Announcement>() {
+            override fun areItemsTheSame(oldItem: Announcement, newItem: Announcement): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Announcement, newItem: Announcement): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }

@@ -21,7 +21,7 @@ class PelaporanMasalahFragment : Fragment() {
     ): View {
         (requireActivity() as AppCompatActivity).supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
-            title = "Detail Penyakit"
+            title = "Pelaporan Masalah"
         }
         //setHasOptionsMenu(true)
 
