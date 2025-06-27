@@ -3,4 +3,11 @@
     <string name="title_papan_pengumuman">Pengumuman</string>
     <string name="title_keuangan">Keuangan</string>
     <string name="string_isi_pengumuman">Bapak, ibu, mohon maaf tukang sampahnya hari ini tidak bisa mengangkut, ban nya bocor, besok Insya Allah baru bisa diangkut, terima kasih</string>
+    <string name="isiPengumuman" />
+    <string name="password">Masukan Password</string>
+    <string name="email">Masukkan email</string>
+    <string name="btn_login_google">Login with Google</string>
+    <string name="or">or</string>
+    <string name="btn_login">Login</string>
+    <string name="tv_login">login</string>
 </resources>

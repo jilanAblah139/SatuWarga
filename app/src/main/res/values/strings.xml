@@ -106,4 +106,12 @@
     <string name="checkbox_foto">Saya bertanggungjawab atas keaslian laporan ini dan menyatakan bahwa kejadian yang dilaporkan benar-benar terjadi.</string>
     <string name="kirim_laporan">Kirim Laporan</string>
     <string name="def_ubahktp">Validasi Surat Keterangan Ubah KTP</string>
+    <string name="isiPengumuman" />
+    <string name="password">Masukan Password</string>
+    <string name="email">Masukkan email</string>
+    <string name="btn_login_google">Login with Google</string>
+    <string name="or">or</string>
+    <string name="btn_login">Login</string>
+    <string name="tv_login">login</string>
+    <string name="default_web_client_id">286301546727-20a4thu5rbnfennou5r34ui2rtg797g4.apps.googleusercontent.com</string>
 </resources>
