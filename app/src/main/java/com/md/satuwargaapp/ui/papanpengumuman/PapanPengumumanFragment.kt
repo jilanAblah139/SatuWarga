@@ -60,18 +60,16 @@ class PapanPengumumanFragment : Fragment() {
         val dataIsi = resources.getStringArray(R.array.data_isi)
         val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
         val dataJabatan = resources.getStringArray(R.array.data_jabatan)
-        val dataLikes = resources.getStringArray(R.array.data_likes)
-        val dataComment = resources.getStringArray(R.array.data_comment)
+
 
         val listPengumuman = ArrayList<papanPengumuman>()
         for (i in dataNama.indices) {
             val pengumuman = papanPengumuman(
+                id = i,
                 namaUser = dataNama[i],
                 isiPengumuman = dataIsi[i],
                 photo = dataPhoto.getResourceId(i, -1),
                 jabatan = dataJabatan[i],
-                jumlahLikes = dataLikes[i].toInt(),
-                jumlahComment = dataComment[i].toInt()
             )
             listPengumuman.add(pengumuman)
         }
@@ -82,8 +80,19 @@ class PapanPengumumanFragment : Fragment() {
     private fun showRecyclerList() {
         // Set up the adapter and layout manager for RecyclerView
         binding.rvPengumuman.layoutManager = LinearLayoutManager(requireContext())
-        val listPengumumanAdapter = ListPengumumanAdapter(list)
-        binding.rvPengumuman.adapter = listPengumumanAdapter
+//        val listPengumumanAdapter = ListPengumumanAdapter(list)
+        adapter = ListPengumumanAdapter(list,
+            onEditClick = { itemToEdit ->
+                val bundle = Bundle().apply {
+                    putParcelable("EXTRA_EDIT", itemToEdit)
+                }
+                findNavController().navigate(
+                    R.id.action_navigation_papan_pengumuman_to_tambahPostinganFragment,
+                    bundle
+                )
+            }
+        )
+        binding.rvPengumuman.adapter = adapter
     }
 
     override fun onDestroyView() {

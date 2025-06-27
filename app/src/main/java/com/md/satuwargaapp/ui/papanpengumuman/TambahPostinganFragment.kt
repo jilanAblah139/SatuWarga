@@ -14,6 +14,8 @@ class TambahPostinganFragment : Fragment() {
 
     private var _binding: FragmentTambahPostinganBinding? = null
     private val binding get() = _binding!!
+    private var isEditMode = false
+    private var editedData: papanPengumuman? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,6 +28,22 @@ class TambahPostinganFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Cek apakah ini mode edit
+        editedData = arguments?.getParcelable("EXTRA_EDIT")
+        isEditMode = editedData != null
+
+        binding.btnClose.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        if (isEditMode) {
+            // Ubah UI jadi mode edit
+            binding.etPostContent.setText(editedData?.isiPengumuman)
+        } else {
+            // Mode tambah biasa
+            binding.btnPost.text = "Posting"
+        }
+
+        // Tombol close
         binding.btnClose.setOnClickListener {
             findNavController().navigateUp()
         }

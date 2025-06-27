@@ -5,11 +5,10 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class papanPengumuman(
+    val id: Int,
     val namaUser: String,
     val isiPengumuman: String,
     val photo:Int,
-    val jabatan: String,
-    val jumlahLikes: Int,
-    val jumlahComment: Int
+    val jabatan: String
 
 ):Parcelable

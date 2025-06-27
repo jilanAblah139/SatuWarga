@@ -3,20 +3,21 @@ package com.md.satuwargaapp.ui.papanpengumuman
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.md.satuwargaapp.R
 
-class ListPengumumanAdapter(private val listPengumuman: ArrayList<papanPengumuman>) : RecyclerView.Adapter<ListPengumumanAdapter.ListViewHolder>() {
+class ListPengumumanAdapter(private val listPengumuman: ArrayList<papanPengumuman>, private val onEditClick: (papanPengumuman)-> Unit) : RecyclerView.Adapter<ListPengumumanAdapter.ListViewHolder>() {
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val namaUser = itemView.findViewById<TextView>(R.id.tv_item_name)
         val isiPengumuman = itemView.findViewById<TextView>(R.id.tv_item_isiPengumuman)
         val photo = itemView.findViewById<ImageView>(R.id.img_item_photo)
         val jabatan = itemView.findViewById<TextView>(R.id.tv_item_jabatan)
-        val jumlahLikes = itemView.findViewById<TextView>(R.id.jumlahLikes)
-        val jumlahComment = itemView.findViewById<TextView>(R.id.jumlahComment)
+        val deleteButton = itemView.findViewById<Button>(R.id.deleteButton)
+        val editButton = itemView.findViewById<Button>(R.id.editButton)
 
     }
 
@@ -29,15 +30,33 @@ class ListPengumumanAdapter(private val listPengumuman: ArrayList<papanPengumuma
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val (namaUser, isiPengumuman, photo, jabatan, jumlahLikes, jumlahComment) = listPengumuman[position]
+//        val (namaUser, isiPengumuman, photo, jabatan, deleteButton) = listPengumuman[position]
+//        Glide.with(holder.itemView.context)
+//            .load(photo)
+//            .into(holder.photo)
+//        holder.namaUser.text = namaUser
+//        holder.isiPengumuman.text = isiPengumuman
+//        holder.jabatan.text = jabatan
+//        holder.deleteButton.setOnClickListener {
+//            listPengumuman.removeAt(position)
+//            notifyItemRemoved(position)
+//        }
+        val item = listPengumuman[position]
         Glide.with(holder.itemView.context)
-            .load(photo)
+            .load(item.photo)
             .into(holder.photo)
-        holder.namaUser.text = namaUser
-        holder.isiPengumuman.text = isiPengumuman
-        holder.jabatan.text = jabatan
-        holder.jumlahLikes.text = jumlahLikes.toString()
-        holder.jumlahComment.text = jumlahComment.toString()
+        holder.namaUser.text = item.namaUser
+        holder.isiPengumuman.text = item.isiPengumuman
+        holder.jabatan.text = item.jabatan
+
+        holder.deleteButton.setOnClickListener {
+            listPengumuman.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, listPengumuman.size)
+        }
+        holder.editButton.setOnClickListener {
+            onEditClick(item)
+        }
 
     }
 
