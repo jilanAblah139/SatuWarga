@@ -1,5 +1,6 @@
 package com.md.satuwargaapp.ui.home
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -61,6 +62,7 @@ class HomeViewModel : ViewModel() {
                 }
             } catch (e: Exception) {
                 _errorMessage.postValue("Error pengumuman: ${e.message}")
+                Log.d("HomeViewModel", "Error pengumuman: ${e.message}")
             } finally {
                 _isLoading.value = false
             }

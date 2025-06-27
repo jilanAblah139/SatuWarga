@@ -2,30 +2,43 @@ package com.md.satuwargaapp.ui.pelayanan
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.md.satuwargaapp.R
-import com.md.satuwargaapp.databinding.ItemStatusLayananBinding
+import com.md.satuwargaapp.data.Report
+import com.md.satuwargaapp.databinding.ItemStatusLayananBinding // Pastikan nama binding ini sesuai
 
+// 2. Perbarui interface untuk menggunakan Report
+interface OnStatusClickListener {
+    fun onStatusClick(report: Report)
+}
+
+// 3. Ubah superclass menjadi ListAdapter
 class StatusPelayananAdapter(
-    private val list: List<StatusPelayanan>,
     private val listener: OnStatusClickListener
-) : RecyclerView.Adapter<StatusPelayananAdapter.ViewHolder>() {
+) : ListAdapter<Report, StatusPelayananAdapter.ViewHolder>(DIFF_CALLBACK) {
 
+    // ViewHolder tetap sama, hanya metode bind yang disesuaikan
     inner class ViewHolder(val binding: ItemStatusLayananBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: StatusPelayanan) {
-            binding.tvJenisLayanan.text = item.jenisLayanan
-            binding.tvJudulLaporan.text = item.judulLaporan
-            binding.textView.text = item.tanggal
-            binding.tvStatus.text = item.status
 
-            when (item.status) {
-                "Diproses" -> binding.tvStatus.setBackgroundResource(R.drawable.bg_status_diproses)
-                "Selesai" -> binding.tvStatus.setBackgroundResource(R.drawable.bg_status_selesai)
-                "Terkirim" -> binding.tvStatus.setBackgroundResource(R.drawable.bg_status_terkirim)
+        // 4. Sesuaikan metode bind untuk menerima objek Report
+        fun bind(item: Report) {
+            // Mengisi view dengan data dari objek Report
+            binding.tvJenisLayanan.text = item.kategori
+            binding.tvJudulLaporan.text = item.judul
+            binding.textView.text = "Diajukan: ${item.createdAt.substring(0, 10)}" // Ambil tanggal saja
+            binding.tvStatus.text = item.status.replaceFirstChar { it.uppercase() }
+
+            // Logika untuk warna status tetap sama
+            when (item.status.lowercase()) {
+                "diproses" -> binding.tvStatus.setBackgroundResource(R.drawable.bg_status_diproses)
+                "selesai" -> binding.tvStatus.setBackgroundResource(R.drawable.bg_status_selesai)
+                "diajukan" -> binding.tvStatus.setBackgroundResource(R.drawable.bg_status_terkirim)
             }
 
-            // Set listener untuk klik item
+            // Set listener untuk klik item, sekarang meneruskan objek Report
             binding.root.setOnClickListener {
                 listener.onStatusClick(item)
             }
@@ -37,21 +50,24 @@ class StatusPelayananAdapter(
         return ViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = list.size
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(list[position])
+        // 5. Gunakan getItem(position) untuk mendapatkan objek Report
+        val report = getItem(position)
+        holder.bind(report)
     }
-}
 
-data class StatusPelayanan(
-    val jenisLayanan: String,
-    val judulLaporan: String,
-    val tanggal: String,
-    val status: String
-)
+    // 6. Hapus data class lokal StatusPelayanan dari file ini
 
-// Tambahkan interface listener
-interface OnStatusClickListener {
-    fun onStatusClick(status: StatusPelayanan)
+    // 7. Tambahkan DiffUtil.ItemCallback
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Report>() {
+            override fun areItemsTheSame(oldItem: Report, newItem: Report): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(oldItem: Report, newItem: Report): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 }

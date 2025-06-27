@@ -53,7 +53,7 @@
         android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSyaratKetentuan"
-        app:srcCompat="@drawable/ic_house_24" />
+        android:src="@drawable/ic_house_24" />
 
     <TextView
         android:id="@+id/tv_desc_1"
@@ -74,7 +74,7 @@
         android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_desc_1"
-        app:srcCompat="@drawable/ic_person_24" />
+        android:src="@drawable/ic_person_24" />
 
     <TextView
         android:id="@+id/tv_desc_2"
@@ -95,7 +95,7 @@
         android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ic_snk_2"
-        app:srcCompat="@drawable/ic_verified_24" />
+        android:src="@drawable/ic_verified_24" />
 
     <TextView
         android:id="@+id/tv_desc_3"
@@ -116,7 +116,7 @@
         android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ic_snk_3"
-        app:srcCompat="@drawable/ic_time_24" />
+        android:src="@drawable/ic_time_24" />
 
     <TextView
         android:id="@+id/tv_desc_4"

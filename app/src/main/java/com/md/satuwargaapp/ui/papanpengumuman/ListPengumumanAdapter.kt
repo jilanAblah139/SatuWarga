@@ -3,7 +3,7 @@ package com.md.satuwargaapp.ui.papanpengumuman
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -22,8 +22,8 @@ class ListPengumumanAdapter(
         private val namaUser: TextView = itemView.findViewById(R.id.tv_item_name)
         private val isiPengumuman: TextView = itemView.findViewById(R.id.tv_item_isiPengumuman)
         private val jabatan: TextView = itemView.findViewById(R.id.tv_item_jabatan)
-        private val deleteButton: Button = itemView.findViewById(R.id.deleteButton)
-        private val editButton: Button = itemView.findViewById(R.id.editButton)
+        val deleteButton: ImageButton = itemView.findViewById(R.id.deleteButton)
+        val editButton: ImageButton = itemView.findViewById(R.id.editButton)
 
         fun bind(announcement: Announcement, onEditClick: (Announcement) -> Unit, onDeleteClick: (Announcement) -> Unit) {
             // Binding data dari objek Announcement ke view

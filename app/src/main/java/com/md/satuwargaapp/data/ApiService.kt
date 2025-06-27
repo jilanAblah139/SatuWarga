@@ -15,7 +15,7 @@ interface ApiService {
 
     // Endpoint untuk mendapatkan semua laporan (memerlukan token)
     @GET("reports")
-    suspend fun getReports(@Header("Authorization") token: String): Response<List<Report>>
+    suspend fun getReports(): Response<List<Report>>
 
     @GET("announcements")
     suspend fun getAnnouncements(): Response<List<Announcement>>
