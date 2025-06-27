@@ -14,9 +14,38 @@ class PelayananViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _reportList = MutableLiveData<List<Report>>()
+    val reportList: LiveData<List<Report>> = _reportList
+
+    private val _toastMessage = MutableLiveData<String?>()
+    val toastMessage: LiveData<String?> = _toastMessage
+
     // LiveData untuk hasil pembuatan laporan
     private val _createReportResult = MutableLiveData<Result<Report>>()
     val createReportResult: LiveData<Result<Report>> = _createReportResult
+
+    /**
+     * Mengambil daftar semua laporan dari server.
+     */
+    fun fetchReports() {
+        _isLoading.value = true
+
+        viewModelScope.launch {
+            try {
+                // Panggil endpoint getReports melalui authService
+                val response = ApiClient.authService.getReports()
+                if (response.isSuccessful) {
+                    _reportList.postValue(response.body())
+                } else {
+                    _toastMessage.postValue("Gagal memuat daftar laporan: ${response.message()}")
+                }
+            } catch (e: Exception) {
+                _toastMessage.postValue("Terjadi kesalahan jaringan: ${e.message}")
+            } finally {
+                _isLoading.value = false
+            }
+        }
+    }
 
     /**
      * Mengirim data laporan masalah baru ke server.

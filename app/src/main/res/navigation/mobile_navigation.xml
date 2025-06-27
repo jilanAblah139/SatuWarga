@@ -12,6 +12,29 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
+        android:id="@+id/statusPelayananFragment"
+        android:name="com.md.satuwargaapp.ui.pelayanan.StatusPelayananFragment"
+    >
+
+    <action
+        android:id="@+id/action_statusPelayananFragment_to_detailStatusFragment"
+        app:destination="@id/detailStatusFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailStatusFragment"
+        android:name="com.md.satuwargaapp.ui.pelayanan.DetailStatusFragment"
+        android:label="Detail Status"
+        tools:layout="@layout/fragment_detail_status" >
+
+        <argument
+            android:name="reportId"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
         android:id="@+id/navigation_pelayanan"
         android:name="com.md.satuwargaapp.ui.pelayanan.PelayananFragment"
         android:label="@string/title_pelayanan"
@@ -117,7 +140,11 @@
         android:id="@+id/navigation_detail_status"
         android:name="com.md.satuwargaapp.ui.pelayanan.DetailStatusFragment"
         android:label="Detail Status"
-        tools:layout="@layout/fragment_detail_status"/>
+        tools:layout="@layout/fragment_detail_status">
+        <argument
+            android:name="reportId"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_list_pelayanan"

@@ -33,7 +33,12 @@ data class Report(
     @SerializedName("status")
     val status: String,
     @SerializedName("user")
-    val user: User // Ini bisa bekerja karena User sekarang Parcelable
+    val user: User, // Ini bisa bekerja karena User sekarang Parcelable
+
+    @SerializedName("createdAt")
+    val createdAt: String,
+    @SerializedName("updatedAt")
+    val updatedAt: String
 ) : Parcelable
 
 // 3. Kode Announcement Anda sudah benar, sekarang ia akan berfungsi dengan baik.

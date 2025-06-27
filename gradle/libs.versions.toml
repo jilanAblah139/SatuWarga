@@ -25,6 +25,7 @@ activity = "1.10.1"
 legacySupportV4 = "1.0.0"
 fragmentKtx = "1.8.5"
 firebaseAuthKtx = "23.2.1"
+nav_version = "2.9.0"
 
 [libraries]
 androidx-lifecycle-livedata-ktx-v262 = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtxVersion" }
