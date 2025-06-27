@@ -11,7 +11,7 @@ import okhttp3.Interceptor
 object ApiClient {
 
     // ganti dengan BASE_URL pada lokal, ke terminal > ipconfig > IPv4 address
-    private const val BASE_URL = "http://192.168.1.14:5000/api/"
+    private const val BASE_URL = "http://192.168.92.250:5000/api/"
 
     // Inisiialisasi SessionManager harus dilakukan sekali, idealnya dari Application class.
     // Untuk kesederhanaan, kita buat fungsi init.

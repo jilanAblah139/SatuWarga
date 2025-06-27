@@ -1,5 +1,6 @@
 package com.md.satuwargaapp.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.md.satuwargaapp.R
+import com.md.satuwargaapp.data.SessionManager
 import com.md.satuwargaapp.databinding.FragmentHomeBinding
+import com.md.satuwargaapp.ui.SplashScreenActivity
 import com.md.satuwargaapp.ui.papanpengumuman.ListPengumumanAdapter
 
 class HomeFragment : Fragment() {
@@ -22,6 +25,7 @@ class HomeFragment : Fragment() {
     // 1. Inisialisasi ViewModel untuk HomeFragment
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var pengumumanAdapter: ListPengumumanAdapter
+    private lateinit var sessionManager: SessionManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,6 +37,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sessionManager = SessionManager(requireContext()) // ✅ Inisialisasi session
+
 
         setupRecyclerView()
         setupListeners()
@@ -64,6 +70,16 @@ class HomeFragment : Fragment() {
     private fun setupListeners() {
         binding.btnLihatSemuaPengumuman.setOnClickListener {
             findNavController().navigate(R.id.navigation_papan_pengumuman)
+        }
+        // ✅ Tambahkan aksi logout di sini
+        binding.buttonLogout.setOnClickListener {
+            sessionManager.clearSession() // hapus token
+            Toast.makeText(requireContext(), "Berhasil logout", Toast.LENGTH_SHORT).show()
+
+            // Pindah ke Splash/Login Activity
+            val intent = Intent(requireContext(), SplashScreenActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
     }
 

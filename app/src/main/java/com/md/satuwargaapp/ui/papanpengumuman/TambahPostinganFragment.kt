@@ -1,3 +1,72 @@
+//package com.md.satuwargaapp.ui.papanpengumuman
+//
+//import android.os.Bundle
+//import androidx.fragment.app.Fragment
+//import android.view.LayoutInflater
+//import android.view.View
+//import android.view.ViewGroup
+//import android.widget.Toast
+//import androidx.navigation.fragment.findNavController
+//import com.md.satuwargaapp.R
+//import com.md.satuwargaapp.databinding.FragmentTambahPostinganBinding
+//
+//class TambahPostinganFragment : Fragment() {
+//
+//    private var _binding: FragmentTambahPostinganBinding? = null
+//    private val binding get() = _binding!!
+//    private var isEditMode = false
+//    private var editedData: papanPengumuman? = null
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View {
+//        _binding = FragmentTambahPostinganBinding.inflate(inflater, container, false)
+//        return binding.root
+//    }
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        // Cek apakah ini mode edit
+//        editedData = arguments?.getParcelable("EXTRA_EDIT")
+//        isEditMode = editedData != null
+//
+//        binding.btnClose.setOnClickListener {
+//            findNavController().navigateUp()
+//        }
+//        if (isEditMode) {
+//            // Ubah UI jadi mode edit
+//            binding.etPostContent.setText(editedData?.isiPengumuman)
+//        } else {
+//            // Mode tambah biasa
+//            binding.btnPost.text = "Posting"
+//        }
+//
+//        // Tombol close
+//        binding.btnClose.setOnClickListener {
+//            findNavController().navigateUp()
+//        }
+//
+//        binding.btnPost.setOnClickListener {
+//            val isiPostingan = binding.etPostContent.text.toString().trim()
+//
+//            if (isiPostingan.isEmpty()) {
+//                Toast.makeText(requireContext(), "Isi postingan tidak boleh kosong", Toast.LENGTH_SHORT).show()
+//            } else {
+//                // Simpan ke database / kirim ke server (kalau sudah ada)
+//                Toast.makeText(requireContext(), "Postingan berhasil dibuat", Toast.LENGTH_SHORT).show()
+//                // Kembali ke halaman Pengumuman (dengan asumsi pakai Navigation Component)
+//                findNavController().navigate(R.id.action_tambahPostinganFragment_to_pengumumanFragment)
+//            }
+//        }
+//    }
+//
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        _binding = null
+//    }
+//}
 package com.md.satuwargaapp.ui.papanpengumuman
 
 import android.os.Bundle
@@ -6,14 +75,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.md.satuwargaapp.R
+import com.md.satuwargaapp.data.ApiClient
 import com.md.satuwargaapp.databinding.FragmentTambahPostinganBinding
+import kotlinx.coroutines.launch
 
 class TambahPostinganFragment : Fragment() {
 
     private var _binding: FragmentTambahPostinganBinding? = null
     private val binding get() = _binding!!
+
     private var isEditMode = false
     private var editedData: papanPengumuman? = null
 
@@ -28,22 +101,17 @@ class TambahPostinganFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Cek apakah ini mode edit
+        // Cek apakah mode edit
         editedData = arguments?.getParcelable("EXTRA_EDIT")
         isEditMode = editedData != null
 
-        binding.btnClose.setOnClickListener {
-            findNavController().navigateUp()
-        }
         if (isEditMode) {
-            // Ubah UI jadi mode edit
             binding.etPostContent.setText(editedData?.isiPengumuman)
+            binding.btnPost.text = "Update"
         } else {
-            // Mode tambah biasa
             binding.btnPost.text = "Posting"
         }
 
-        // Tombol close
         binding.btnClose.setOnClickListener {
             findNavController().navigateUp()
         }
@@ -54,10 +122,29 @@ class TambahPostinganFragment : Fragment() {
             if (isiPostingan.isEmpty()) {
                 Toast.makeText(requireContext(), "Isi postingan tidak boleh kosong", Toast.LENGTH_SHORT).show()
             } else {
-                // Simpan ke database / kirim ke server (kalau sudah ada)
-                Toast.makeText(requireContext(), "Postingan berhasil dibuat", Toast.LENGTH_SHORT).show()
-                // Kembali ke halaman Pengumuman (dengan asumsi pakai Navigation Component)
-                findNavController().navigate(R.id.action_tambahPostinganFragment_to_pengumumanFragment)
+                val title = "Pengumuman Baru"
+                postAnnouncementToServer(title, isiPostingan)
+            }
+        }
+    }
+
+    private fun postAnnouncementToServer(title: String, content: String) {
+        val requestBody = mapOf(
+            "title" to title,
+            "content" to content
+        )
+
+        lifecycleScope.launch {
+            try {
+                val response = ApiClient.authService.createAnnouncement(requestBody)
+                if (response.isSuccessful) {
+                    Toast.makeText(requireContext(), "Pengumuman berhasil dikirim", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_tambahPostinganFragment_to_pengumumanFragment)
+                } else {
+                    Toast.makeText(requireContext(), "Gagal kirim: ${response.code()} - ${response.message()}", Toast.LENGTH_SHORT).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(requireContext(), "Error: ${e.localizedMessage}", Toast.LENGTH_SHORT).show()
             }
         }
     }
