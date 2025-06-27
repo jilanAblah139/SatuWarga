@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.md.satuwargaapp.R
 import com.md.satuwargaapp.databinding.FragmentHomeBinding
 import com.md.satuwargaapp.ui.papanpengumuman.ListPengumumanAdapter
@@ -38,7 +39,7 @@ class HomeFragment : Fragment() {
         setupObservers()
 
         // 2. Minta ViewModel untuk mengambil data saat fragment dibuat
-        viewModel.fetchLatestAnnouncements()
+        viewModel.loadHomeData()
     }
 
     private fun setupRecyclerView() {
@@ -61,16 +62,26 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupListeners() {
-        // 4. Arahkan ke halaman daftar pengumuman lengkap
         binding.btnLihatSemuaPengumuman.setOnClickListener {
-            // Gunakan NavController untuk pindah ke PapanPengumumanFragment
-            // Pastikan ID ini sesuai dengan yang ada di navigation graph Anda
             findNavController().navigate(R.id.navigation_papan_pengumuman)
         }
     }
 
     private fun setupObservers() {
-        // 5. Observer untuk daftar pengumuman terbaru
+        // Observer untuk data profil pengguna
+        viewModel.userProfile.observe(viewLifecycleOwner) { user ->
+            // Update UI dengan data pengguna
+            binding.tvNama.text = user.nama
+            binding.tvAlamat.text = user.alamat
+
+            // Catatan: Model 'User' kita belum punya URL foto profil.
+            // Jadi untuk sementara kita pakai placeholder dari drawable.
+            Glide.with(this)
+                .load(R.drawable.dummyprofile)
+                .circleCrop()
+                .into(binding.imgProfile)
+        }
+
         viewModel.latestAnnouncements.observe(viewLifecycleOwner) { announcementList ->
             // Update data di adapter menggunakan submitList
             pengumumanAdapter.submitList(announcementList)

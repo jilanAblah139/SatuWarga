@@ -11,7 +11,7 @@ interface ApiService {
 
     // Endpoint untuk mendapatkan profil pengguna (memerlukan token)
     @GET("auth/me")
-    suspend fun getMe(@Header("Authorization") token: String): Response<User>
+    suspend fun getMe(): Response<User>
 
     // Endpoint untuk mendapatkan semua laporan (memerlukan token)
     @GET("reports")
@@ -22,6 +22,7 @@ interface ApiService {
 
     @POST("announcements")
     suspend fun createAnnouncement(@Body requestBody: Map<String, String>): Response<Announcement>
+
     @DELETE("announcements/{id}")
     suspend fun deleteAnnouncement(@Path("id") announcementId: String): Response<Unit>
 
